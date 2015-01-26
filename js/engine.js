@@ -25,8 +25,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 505;
-    canvas.height = 606;
+    canvas.width = numOfCols*101;
+    canvas.height = 90 + (numOfRows*83);
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -80,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function  and loops through all of the
@@ -109,14 +109,15 @@ var Engine = (function(global) {
          */
         var rowImages = [
                 'images/water-block.png',   // Top row is water
+                'images/grass-block.png',   // Row 1 of 3 of grass
                 'images/stone-block.png',   // Row 1 of 3 of stone
                 'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/grass-block.png',   // Row 2 of 3 of grass
+                'images/grass-block.png'    // Row 3 of 3 of grass
             ],
-            numRows = 6,
-            numCols = 5,
+            numRows = numOfRows,
+            numCols = numOfCols,
             row, col;
 
         /* Loop through the number of rows and columns we've defined above
@@ -153,6 +154,10 @@ var Engine = (function(global) {
         });
 
         player.render();
+
+        rocks.forEach(function(rock) {
+            rock.render();
+        });
     }
 
     /* This function does nothing but it could have been a good place to
@@ -171,7 +176,11 @@ var Engine = (function(global) {
         'images/stone-block.png',
         'images/water-block.png',
         'images/grass-block.png',
-        'images/enemy-bug.png',
+        'images/enemy-bug-blue.png',
+        'images/enemy-bug-green.png',
+        'images/enemy-bug-red.png',
+        'images/Rock.png',
+        //'images/Square.png',
         'images/char-boy.png'
     ]);
     Resources.onReady(init);
