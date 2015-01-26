@@ -1,7 +1,3 @@
-//TODO: add collision detection of bug to player
-//TODO: show score?
-//TODO: reset bugs at death
-
 var numOfCols = 7;
 var numOfRows = 7;
 var score = 0;
@@ -16,11 +12,11 @@ var Enemy = function() {
     this.sprite = 'images/enemy-bug-red.png';
     this.x = this.startX();
     this.y = this.startY();
-    this.speed = Math.floor(Math.random()*100)+50;
+    this.speed = Math.floor(Math.random()*150)+100;
 }
 
 Enemy.prototype.startX = function () {
-    return -(Math.floor(Math.random()*1000));
+    return -((Math.floor(Math.random()*800))+200);
 }
 
 Enemy.prototype.startY = function() {
@@ -42,18 +38,15 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    ctx.drawImage(Resources.get('images/Square.png'), this.x, this.y+110);
-    ctx.drawImage(Resources.get('images/Square.png'), this.x+96, this.y+110);
 }
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-allEnemies = [new Enemy(),new Enemy(),new Enemy()];//,new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy()];
+allEnemies = [new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy()];
 
 // Place the player object in a variable called player
 var Player = function() {
@@ -92,8 +85,6 @@ Player.prototype.handleInput = function (num) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    ctx.drawImage(Resources.get('images/Square.png'), this.x+18, this.y+100);
-    ctx.drawImage(Resources.get('images/Square.png'), this.x+79, this.y+100);
 }
 
 Player.prototype.reset = function() {
