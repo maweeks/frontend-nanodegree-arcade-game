@@ -1,3 +1,9 @@
+//TODO: add enemy movement
+//TODO: add random speed
+//TODO: change 'Enemy.prototype.startX'
+//TODO: reset enemy from the right to the left once off screen
+//TODO: add collision detection of bug to player
+
 var numOfCols = 7;
 var numOfRows = 7;
 var score = 0;
@@ -10,6 +16,18 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug-red.png';
+    this.x = this.startX();
+    this.y = this.startY();
+    this.speed = Math.floor(Math.random()*20);
+    console.log(this.speed);
+}
+
+Enemy.prototype.startX = function () {
+    return (Math.floor(Math.random()*numOfCols)*101)-1;
+}
+
+Enemy.prototype.startY = function() {
+    return (Math.floor(Math.random()*3)*83) + 145;
 }
 
 // Update the enemy's position, required method for game
@@ -32,7 +50,7 @@ Enemy.prototype.render = function() {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-allEnemies = [];
+allEnemies = [new Enemy(),new Enemy(),new Enemy()];//,new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy()];
 
 // Place the player object in a variable called player
 var Player = function() {
