@@ -1,7 +1,3 @@
-//TODO: add enemy movement
-//TODO: add random speed
-//TODO: change 'Enemy.prototype.startX'
-//TODO: reset enemy from the right to the left once off screen
 //TODO: add collision detection of bug to player
 
 var numOfCols = 7;
@@ -18,12 +14,12 @@ var Enemy = function() {
     this.sprite = 'images/enemy-bug-red.png';
     this.x = this.startX();
     this.y = this.startY();
-    this.speed = Math.floor(Math.random()*20);
+    this.speed = Math.floor(Math.random()*100)+50;
     console.log(this.speed);
 }
 
 Enemy.prototype.startX = function () {
-    return (Math.floor(Math.random()*numOfCols)*101)-1;
+    return -(Math.floor(Math.random()*1000));
 }
 
 Enemy.prototype.startY = function() {
@@ -36,6 +32,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x += dt*this.speed;
+    if (this.x > numOfRows*100) {
+        this.x = this.startX();
+    }
 }
 
 // Draw the enemy on the screen, required method for game
