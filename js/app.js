@@ -1,4 +1,6 @@
 //TODO: add collision detection of bug to player
+//TODO: show score?
+//TODO: reset bugs at death
 
 var numOfCols = 7;
 var numOfRows = 7;
@@ -15,7 +17,6 @@ var Enemy = function() {
     this.x = this.startX();
     this.y = this.startY();
     this.speed = Math.floor(Math.random()*100)+50;
-    console.log(this.speed);
 }
 
 Enemy.prototype.startX = function () {
@@ -33,7 +34,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += dt*this.speed;
-    if (this.x > numOfRows*100) {
+    if (this.x > numOfRows*101) {
         this.x = this.startX();
     }
 }
@@ -41,6 +42,8 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get('images/Square.png'), this.x, this.y+110);
+    ctx.drawImage(Resources.get('images/Square.png'), this.x+96, this.y+110);
 }
 
 // Now write your own player class
@@ -89,6 +92,8 @@ Player.prototype.handleInput = function (num) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get('images/Square.png'), this.x+18, this.y+100);
+    ctx.drawImage(Resources.get('images/Square.png'), this.x+79, this.y+100);
 }
 
 Player.prototype.reset = function() {
@@ -151,9 +156,17 @@ function checkCollisions() {
         moveRocks()
     }
     //If player gets hit by a bug, end the game.
-    else if (false) {
+    else if (hitByBug()) {
         endGame();
     }
+}
+
+function hitByBug() {
+    allEnemies.forEach(function(enemy) {
+        if ((player.x - enemy.x >= -79) && (player.x - enemy.x <= 78) && (player.y - enemy.y == 8)) {
+            endGame();
+        }
+    });
 }
 
 function noRock(moveAxis, moveValue) {
