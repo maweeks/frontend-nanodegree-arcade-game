@@ -177,7 +177,6 @@ function noRock(moveAxis, moveValue) {
     // (The 18 accounts for the offset when drawing the stone compared to the player.)
     rocks.forEach(function(rock) {
         if (((newPlayerX - rock.x) == 0) && ((newPlayerY - rock.y) == 18)) {
-            console.log('rock');
             notFoundRock = false;
         }
     });
@@ -199,5 +198,4 @@ function resetGame() {
     score = 0;
     player.x = player.startX();
     player.y = player.startY();
-    console.log("X: " + player.x + " Y: " + player.y)
 }
