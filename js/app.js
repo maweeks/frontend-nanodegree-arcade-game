@@ -51,8 +51,8 @@ allEnemies = [new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new En
 // Place the player object in a variable called player
 var Player = function() {
     this.sprite = 'images/char-boy.png';
-    //top-left cell = [-1, -13];
-    //Place player on bottom row, in random column.
+    // Place player on bottom row, in random column.
+    // Top-left cell for player = [-1, -13];
     this.x = this.startX();
     this.y = this.startY();
 }
@@ -123,8 +123,8 @@ Rock.prototype.startX = function () {
     return (Math.floor(Math.random()*numOfCols)*101)-1;
 }
 
+// Add up to 3 rocks on both the second row and the fifth row.
 var rocks = [new Rock(52),new Rock(52),new Rock(52),new Rock(384),new Rock(384),new Rock(384)];
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
