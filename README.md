@@ -1,9 +1,24 @@
-frontend-nanodegree-arcade-game
-===============================
+Let's go swimming
+=================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
 
-for self-checking their submission.
+Aim:
+----
+Score as many points as you can by reaching the water
+
+
+How to play:
+------------
+To start the game, simply open index.html.
+
+You can either clone the repository or run it online here: http://maweeks.github.io/nano-fewd-03/
+
+
+Controls:
+---------
+Arrow keys - move the player
+
+Space - end the game (kill the player)
 
 
 Sources used:
