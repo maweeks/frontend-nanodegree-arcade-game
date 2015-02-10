@@ -1,6 +1,6 @@
 // Set the width and height of the playing grid.
-var numOfCols = 7;
-var numOfRows = 7;
+var NUM_OF_COL = 7;
+var NUM_OF_ROW = 7;
 
 // Set the player's score to 0.
 var score = 0;
@@ -12,22 +12,22 @@ var Enemy = function() {
     this.sprite = 'images/enemy-bug-red.png';
     this.x = this.startX();
     this.y = this.startY();
-}
+};
 
 // Draw the enemy on the screen, required method for game.
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // A function to randomly generate the x start location of an enemy.
 Enemy.prototype.startX = function () {
     return -((Math.floor(Math.random()*800))+200);
-}
+};
 
 // A function to randomly generate the y start location of an enemy.
 Enemy.prototype.startY = function() {
     return (Math.floor(Math.random()*3)*83) + 145;
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -36,10 +36,10 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += dt*this.speed;
-    if (this.x > numOfRows*101) {
+    if (this.x > NUM_OF_ROW*101) {
         this.x = this.startX();
     }
-}
+};
 
 // Place all enemy objects in an array called allEnemies
 allEnemies = [new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy(),new Enemy()];
@@ -52,7 +52,7 @@ var Player = function() {
     // Top-left cell for player = [-1, -13];
     this.x = this.startX();
     this.y = this.startY();
-}
+};
 
 // Defines what happens to the player when user input is detected.
 Player.prototype.handleInput = function (num) {
@@ -80,28 +80,28 @@ Player.prototype.handleInput = function (num) {
         default:
             return;
     }
-}
+};
 
 // Draws the player on the canvas.
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Reset the player's location.
 Player.prototype.reset = function() {
     this.x = this.startX();
     this.y = this.startY();
-}
+};
 
 // Randomly generate the location of the player.
 Player.prototype.startX = function () {
-    return (Math.floor(Math.random()*numOfCols)*101)-1;
-}
+    return (Math.floor(Math.random()*NUM_OF_COL)*101)-1;
+};
 
 // Place the player on the bottom row of the grid.
 Player.prototype.startY = function() {
     return 485;
-}
+};
 
 // Create the player.
 var player = new Player();
@@ -110,20 +110,20 @@ var player = new Player();
 var Rock = function(yLoc) {
     this.x = this.startX();
     this.y = yLoc;
-}
+};
 
 // Show the rock on the canvas.
 Rock.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Set the sprite of the rock.
-Rock.prototype.sprite = 'images/Rock.png'
+Rock.prototype.sprite = 'images/Rock.png';
 
 // Randomly generate the x location of the rock.
 Rock.prototype.startX = function () {
-    return (Math.floor(Math.random()*numOfCols)*101)-1;
-}
+    return (Math.floor(Math.random()*NUM_OF_COL)*101)-1;
+};
 
 // Add up to 3 rocks on both the second row and the fifth row.
 var rocks = [new Rock(52),new Rock(52),new Rock(52),new Rock(384),new Rock(384),new Rock(384)];
@@ -153,7 +153,7 @@ function checkCollisions() {
     else if (hitByBug()) {
         endGame();
     }
-}
+};
 
 function hitByBug() {
     // If part of the player sprite is touching part of a bug then end the game.
@@ -162,7 +162,7 @@ function hitByBug() {
             endGame();
         }
     });
-}
+};
 
 // Check if there is a rock where the player is trying to move
 // moveAxis - contains 'x' or 'y' depending which axis the player is moving on.
@@ -191,24 +191,24 @@ function noRock(moveAxis, moveValue) {
     });
     // Return false if a rock is in the way.
     return notFoundRock;
-}
+};
 
 // Set a new x location for each rock.
 function moveRocks() {
     rocks.forEach(function(rock) {
         rock.x = rock.startX();
     });
-}
+};
 
 // If the player dies, alert the user their score and reset the game.
 function endGame() {
     alert("Congratulations, you scored " + score + ".");
     resetGame();
-}
+};
 
 // Reset the score to zero and give the player a new starting position.
 function resetGame() {
     score = 0;
     player.x = player.startX();
     player.y = player.startY();
-}
+};
