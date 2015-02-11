@@ -1,3 +1,26 @@
 body {
     text-align: center;
 }
+
+.thirdWidth {
+  display: inline-block;
+  width: 30%;
+}
+
+#gameDetails {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#highScore {
+  text-align: left;
+}
+
+#viewHeader {
+  text-align: center;
+}
+
+#score {
+  text-align: right;
+}

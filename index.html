@@ -6,10 +6,15 @@
 		<link rel="shortcut icon" href="images/icon.ico">
 	</head>
 	<body>
-		<header>
+		<header id="header">
 			<h1> Let's Go Swimming! </h1>
-			<em> Reach the water using the arrow keys to earn a point! If you get hit by a bug you lose... </em>
+			<em> Reach the water using the arrow keys to earn a point! If you get hit by a bug you lose... </em><br/><br/>
 		</header>
+    <div id="gameDetails">
+      <div class="thirdWidth" id="highScore"><b><em>High Score: 0</em></b></div>
+      <div class="thirdWidth" id="viewHeader"><a href="javascript:hideHeader();">Minimize heading</a></div>
+      <div class="thirdWidth" id="score"><b><em>Score: 0</em></b></div>
+    </div>
 		<script src="js/resources.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/engine.js"></script>

@@ -25,8 +25,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = NUM_OF_COL*101;
-    canvas.height = 90 + (NUM_OF_ROW*83);
+    canvas.width = NUM_OF_COL * 101;
+    canvas.height = 90 + (NUM_OF_ROW * 83);
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
