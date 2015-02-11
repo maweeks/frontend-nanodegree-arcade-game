@@ -159,7 +159,6 @@ function showHeader() {
 // moveValue - the distance that the player is trying to move.
 // @Return bool - return true if there is no rock in the way.
 function noRock(moveAxis, moveValue) {
-
     // Calculate the attempted player move.
     var newPlayerX, newPlayerY, notFoundRock = true;
     if (moveAxis === "x") {
