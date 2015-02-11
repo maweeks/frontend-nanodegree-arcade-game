@@ -25,8 +25,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = numOfCols*101;
-    canvas.height = 90 + (numOfRows*83);
+    canvas.width = NUM_OF_COL*101;
+    canvas.height = 90 + (NUM_OF_ROW*83);
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -115,8 +115,8 @@ var Engine = (function(global) {
                 'images/grass-block.png',   // Row 2 of 3 of grass
                 'images/grass-block.png'    // Row 3 of 3 of grass
             ],
-            numRows = numOfRows,
-            numCols = numOfCols,
+            numRows = NUM_OF_ROW,
+            numCols = NUM_OF_COL,
             row, col;
 
         /* Loop through the number of rows and columns we've defined above
